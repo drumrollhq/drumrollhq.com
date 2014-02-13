@@ -92,7 +92,7 @@ coreHelpers.encode = function (context, str) {
 //
 coreHelpers.pageUrl = function (context, block) {
     /*jslint unparam:true*/
-    return config.paths().subdir + (context === 1 ? '/' : ('/page/' + context + '/'));
+    return config.paths().subdir + (context === 1 ? '/' : ('/blog/' + context + '/'));
 };
 
 // ### URL helper

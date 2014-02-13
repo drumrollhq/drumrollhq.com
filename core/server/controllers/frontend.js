@@ -23,15 +23,23 @@ frontendControllers = {
         // Parse the page number
         var pageParam = req.params.page !== undefined ? parseInt(req.params.page, 10) : 1,
             postsPerPage,
-            options = {};
+            options = {},
+            isHome = false;
 
         // No negative pages, or page 1
-        if (isNaN(pageParam) || pageParam < 1 || (pageParam === 1 && req.route.path === '/page/:page/')) {
+        if (isNaN(pageParam) || pageParam < 1 || (pageParam === 1 && req.route.path === '/blog/:page/')) {
             return res.redirect(config.paths().subdir + '/');
         }
 
         return api.settings.read('postsPerPage').then(function (postPP) {
             postsPerPage = parseInt(postPP.value, 10);
+
+            // CUSTOM
+            if (req.route.path === '/') {
+                postsPerPage = 3;
+                isHome = true;
+            }
+
             options.page = pageParam;
 
             // No negative posts per page, must be number
@@ -57,7 +65,7 @@ frontendControllers = {
 
             // Render the page of posts
             filters.doFilter('prePostsRender', page.posts).then(function (posts) {
-                res.render('index', {posts: posts, pagination: {page: page.page, prev: page.prev, next: page.next, limit: page.limit, total: page.total, pages: page.pages}});
+                res.render('index', {isHome: isHome, posts: posts, pagination: {page: page.page, prev: page.prev, next: page.next, limit: page.limit, total: page.total, pages: page.pages}});
             });
         }).otherwise(function (err) {
             var e = new Error(err.message);
