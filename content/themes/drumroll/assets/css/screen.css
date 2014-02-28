@@ -31,6 +31,17 @@
 
 /* Import the font file with the icons in it */
 @font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot');
+    src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.woff') format('woff'),
+        url('../fonts/icomoon.ttf') format('truetype'),
+        url('../fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'icons';
     src:url('../fonts/icons.eot');
     src:url('../fonts/icons.eot?#iefix') format('embedded-opentype'),
@@ -46,8 +57,8 @@
 .icon-feed:before,
 .icon-twitter:before,
 .icon-google-plus:before,
+.icon-mail:before,
 .icon-facebook:before {
-    font-family: 'icons';
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -56,6 +67,19 @@
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     text-decoration: none;
+    vertical-align: center;
+}
+
+.icon-twitter:before,
+.icon-google-plus:before,
+.icon-mail:before,
+.icon-facebook:before {
+    font-family: 'icomoon';
+}
+
+.icon-ghost:before,
+.icon-feed:before {
+    font-family: 'icons';
 }
 
 /* Each icon is created by inserting the corret character into the
@@ -67,14 +91,16 @@
     content: "\e001";
 }
 .icon-twitter:before {
-    content: "\e002";
-    font-size: 1.1em;
+    content: "\e602";
 }
 .icon-google-plus:before {
-    content: "\e003";
+    content: "\e603";
+}
+.icon-mail:before {
+    content: "\e600";
 }
 .icon-facebook:before {
-    content: "\e004";
+    content: "\e601";
 }
 
 
@@ -92,7 +118,7 @@ body {
     height: 100%;
     max-height: 100%;
     font-family: 'Open Sans', sans-serif;
-    font-size: 2.0rem;
+    font-size: 18px;
     line-height: 1.6em;
     color: #3A4145;
 }
@@ -148,12 +174,13 @@ h6 {
 }
 
 a {
-    color: #4a4a4a;
+    color: #10827F;
     transition: color ease 0.3s;
+    text-decoration: underline;
 }
 
 a:hover {
-    color: #57A3E8;
+    color: #08D1CC;
 }
 
 h1 a, h2 a, h3 a,
@@ -338,6 +365,11 @@ margin on the iframe, cause it breaks stuff. */
    3. Utilities - These things get used a lot
    ========================================================================== */
 
+.row {
+    clear: both;
+    margin: auto;
+}
+
 /* Hides shit */
 .hidden {
     text-indent: -9999px;
@@ -346,6 +378,7 @@ margin on the iframe, cause it breaks stuff. */
 }
 
 .ofsc {
+    margin: 0;
     margin-left: -999999px !important;
     height: 1px;
 }
@@ -353,9 +386,11 @@ margin on the iframe, cause it breaks stuff. */
 /* Creates a responsive wrapper that makes our content scale nicely */
 .inner {
     position: relative;
-    width: 80%;
-    max-width: 700px;
+    width: 100%;
+    max-width: 820px;
+    /*padding: 0 10px;*/
     margin: 0 auto;
+    clear: both;
 }
 
 /* Centres vertically yo. (IE8+) */
@@ -393,8 +428,12 @@ margin on the iframe, cause it breaks stuff. */
     padding-top: 20px;
 }
 
+body.home .site-head {
+    padding-bottom: 50px;
+}
+
 .blog-logo {
-    max-width: 350px;
+    max-width: 400px;
     margin: auto;
     display: block;
 }
@@ -402,6 +441,7 @@ margin on the iframe, cause it breaks stuff. */
 .blog-logo img {
     width: 100%;
     max-width: 100%;
+    padding: 0 15px;
 }
 
 .blog-description {
@@ -409,11 +449,15 @@ margin on the iframe, cause it breaks stuff. */
     font-weight: 300;
     text-align: center;
     color: white;
+    padding: 20px 0;
 }
 
-nav {
+.site-head nav {
     height: 50px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #5FC1BF;
+    position: absolute;
+    width: 100%;
+    z-index: 100000;
 }
 
 nav ul {
@@ -426,7 +470,7 @@ nav ul {
 
 nav li {
     display: inline-block;
-    font-weight: 300;
+    font-weight: 200;
 }
 
 nav a {
@@ -441,7 +485,7 @@ nav a {
     color: white;
     border: none;
     background: transparent;
-    font-weight: 300;
+    font-weight: 200;
     text-decoration: none;
     -webkit-transition: background 0.5s ease;
     -moz-transition: background 0.5s ease;
@@ -458,9 +502,245 @@ nav .menu {
     display: none;
 }
 
+nav .logo {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 0;
+    opacity: 0;
+    height: 50px;
+    overflow: hidden;
+    margin-bottom: -18px;
+    /* Hack: */
+    position: relative;
+    top: -1px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+nav.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav .logo.active {
+    width: 120px;
+    opacity: 1;
+}
+
+nav .logo img {
+    height: 20px;
+    /* Hack: */
+    position: relative;
+    top: -2px;
+}
+
+.post {
+    width: 80%;
+    max-width: 780px;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.post-header {
+    border-bottom: 1px solid #aaa;
+    clear: both;
+    margin-bottom: 0;
+}
+
+.post-header:after {
+    content: ' ';
+    clear: both;
+    display: block;
+}
+
+.post-header a {
+    font-weight: 300;
+    text-decoration: none
+}
+
+.post-header h2 {
+    margin: 0;
+}
+
+.post-title {
+    float: left;
+}
+.post-meta {
+    float: right;
+    position: relative;
+    top: 15px;
+    color: #999;
+    font-weight: 300;
+}
+
+.post-excerpt :first-child {
+    margin-top: 1em;
+}
+
+.home section {
+    padding-top: 60px;
+    margin-top: -30px;
+}
+
+.home h2, .home h3, .home h4 {
+    font-weight: 200;
+    margin-bottom: 0;
+}
+
+.home h3 {
+    font-weight: 400;
+    font-size: 24px;
+}
+
+aside img {
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.home em {
+    font-weight: 300;
+}
+
+.home p {
+    margin-top: 15px;
+}
+
+.home .post {
+    margin: 0;
+    width: auto;
+}
+
+.home article.post {
+    margin-top: 20px;
+}
+
+.home .post-meta {
+    top: 0;
+}
+
+.home section .post-excerpt {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.home section :first-child {
+    margin-top: 0;
+}
+
+.home .read-more {
+    float: right;
+    display: block;
+    padding-bottom: 20px;
+}
+
+.home .human div {
+    margin-bottom: 30px;
+}
+
+.home .human img {
+    margin-top: 20px;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
+.home .human ul {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.contact ul {
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+    list-style: none;
+}
+
+.contact a {
+    text-decoration: none;
+}
+
+.contact li {
+    height: 50px;
+    line-height: 50px
+}
+.contact a:before {
+    font-size: 1.5em;
+    vertical-align: -0.2em;
+    padding-right: 10px;
+}
+
+#erase-all-kittens h2 {
+    margin-top: 14px;
+}
+
 /* ==========================================================================
    5. Single Post - When you click on an individual post
    ========================================================================== */
+
+.post-template .post-meta {
+    top: 25px;
+}
+
+.post-template section {
+    clear: both;
+}
+
+.post-content img {
+    display: block;
+    margin: auto;
+}
+
+.share {
+    text-align: center;
+}
+
+.share h4 {
+    color: #bbb;
+    font-size: 1em;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+}
+
+.share a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 1.5em;
+    vertical-align: -0.2em;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.share a:hover {
+    color: #08D1CC;
+}
+
+.comic {
+   border: 2px solid black;
+   background: black;
+   color: white;
+}
+
+.comic:after {
+   content: '.';
+   height: 0px;
+   display: block;
+   color: transparent;
+   clear: both;
+}
+
+.comic * {
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+   float: left;
+   width: 25%;
+   border: 2px solid black
+}
 
 /* ==========================================================================
    6. Third Party Elements - Embeds from other services
@@ -672,14 +952,35 @@ nav .menu {
 
 }
 
+@media only screen and (max-width: 767.9px) {
+    .home aside img {
+        padding-top: 0;
+        padding-bottom: 30px;
+    }
+
+    .comic * {
+        width: 50%;
+    }
+}
+
 @media only screen and (max-width: 750px) {
-    nav {
+
+    .site-head nav {
         height: 40px;
     }
 
-    nav ul {
+    body.home .site-head {
+        padding-bottom: 40px;
+    }
+
+    .site-head nav ul {
         height: 40px;
         line-height: 40px;
+    }
+
+    nav li {
+        position: relative;
+        top: -1px;
     }
 
     nav li a {
@@ -688,15 +989,36 @@ nav .menu {
         padding-left: 10px;
         padding-right: 10px;
     }
+
+    nav .logo {
+        margin-bottom: -22px;
+    }
+
+    nav .logo img {
+        height: 18px;
+        top: -2px;
+    }
 }
 
 @media only screen and (max-width: 600px) {
     nav .menu {
         display: block;
+        float: left;
+        width: 50%;
+        text-align: left;
+    }
+
+    .site-head nav .logo {
+        display: block;
+        float: right;
+        width: 50%;
+        text-align: right;
+        clear: none;
     }
 
     nav li {
         display: block;
+        clear: both;
     }
 
     nav, nav ul.inner {
@@ -705,8 +1027,10 @@ nav .menu {
         overflow: hidden;
     }
 
-    nav.expanded, nav.expanded ul.inner {
-        height: auto;
+    nav, nav ul.inner {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
     }
 }
 
@@ -716,7 +1040,13 @@ nav .menu {
 
 
 @media only screen and (max-width: 500px) {
+  body {
+    font-size: 16px;
+  }
 
+  .comic * {
+    width: 100%;
+  }
 }
 
 /* ==========================================================================

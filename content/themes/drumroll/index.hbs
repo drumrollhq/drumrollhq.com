@@ -1,39 +1,10 @@
 {{!< default}}
 
-{{! The comment above "< default" means - insert everything in this file into
-    the {body} of the default.hbs template, which contains our header/footer. }}
-
-{{! The big featured header on the homepage, with the site logo and description }}
-<header class="site-head">
-    <div class="site-head-content inner">
-        {{#if @blog.logo}}
-            <a class="blog-logo" href="{{@blog.url}}">
-                <img src="/assets/img/logo-l.png" alt="{{@blog.title}}" />
-                <h1 class="blog-title ofsc">{{@blog.title}}</h1>
-            </a>
-        {{/if}}
-        <h2 class="blog-description">{{@blog.description}}</h2>
-    </div>
-
-    <nav>
-        <ul class="inner">
-            <li class="menu"><a>
-                <span class="burger"><span></span><span></span><span></span></span>
-                Menu
-            </a></li>
-            <li><a href="/#erase-all-kittens">Erase All Kittens</a></li>
-            <li><a href="/blog/">Happenings</a></li>
-            <li><a href="/#humans">Humans</a></li>
-            <li><a href="/#contact">Reveal Yourself</a></li>
-        </ul>
-    </nav>
-</header>
-
 {{! The main content area on the homepage }}
 <main class="content" role="main">
 
     {{#if isHome}}
-        Home!
+        {{>home}}
     {{else}}
         {{>blog}}
     {{/if}}
