@@ -121,6 +121,7 @@ body {
     font-size: 18px;
     line-height: 1.6em;
     color: #3A4145;
+    text-align: justify;
 }
 
 ::-moz-selection {
@@ -144,33 +145,33 @@ h4, h5, h6 {
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 3rem;
     line-height: 1.2em;
     letter-spacing: -2px;
     text-indent: -3px;
 }
 
 h2 {
-    font-size: 4rem;
+    font-size: 2.5rem;
     line-height: 1.2em;
     letter-spacing: -1px;
     text-indent: -2px;
 }
 
 h3 {
-    font-size: 3.5rem;
+    font-size: 2rem;
 }
 
 h4 {
-    font-size: 3rem;
+    font-size: 1.5rem;
 }
 
 h5 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 h6 {
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 a {
@@ -370,6 +371,16 @@ margin on the iframe, cause it breaks stuff. */
     margin: auto;
 }
 
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
 /* Hides shit */
 .hidden {
     text-indent: -9999px;
@@ -428,12 +439,16 @@ margin on the iframe, cause it breaks stuff. */
     padding-top: 20px;
 }
 
+.site-head h2 {
+    font-size: 18px;
+}
+
 body.home .site-head {
     padding-bottom: 50px;
 }
 
 .blog-logo {
-    max-width: 400px;
+    max-width: 300px;
     margin: auto;
     display: block;
 }
@@ -585,19 +600,63 @@ nav .logo img {
     margin-top: -30px;
 }
 
+.home section.thin {
+    padding-top: 30px;
+    margin-top: 0;
+}
+
+.home section.no-top {
+    padding-top: 0;
+}
+
+.home section.post-excerpt {
+    padding-bottom: 10px;
+}
+
 .home h2, .home h3, .home h4 {
     font-weight: 200;
     margin-bottom: 0;
 }
 
-.home h3 {
-    font-weight: 400;
-    font-size: 24px;
+.home h2 {
+    text-align: center;
 }
 
-aside img {
-    width: 100%;
-    padding-bottom: 50px;
+.home .subtitle {
+    font-style: italic;
+    padding-top: 0.3em;
+}
+
+.home h3.subtitle {
+    font-weight: 200;
+    font-size: 1em;
+    display: block;
+    text-align: center;
+}
+
+.col-sm-12 h3 {
+    text-align: center
+}
+
+.strip.strip-eak {
+    background-color: #473475;
+    background-image: url(/assets/img/eak-thin-bg.png);
+    background-size: auto 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.strip-eak section.thin {
+    padding-top: 49px;
+    margin-top: -49px;
+}
+
+#eak-logo {
+    width: 190px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: -20px;
 }
 
 .home em {
@@ -606,6 +665,10 @@ aside img {
 
 .home p {
     margin-top: 15px;
+}
+
+.strip {
+    background: #dcf7f6;
 }
 
 .home .post {
@@ -647,15 +710,26 @@ aside img {
     margin: auto;
 }
 
+.home .human h3 {
+    margin-top: 20px;
+}
+
+.home .human h3, .home .human .subtitle {
+    margin-left: 20px;
+}
+
 .home .human ul {
     font-size: 18px;
-    margin-top: 0;
+    margin-top: 20px;
+}
+
+.contact {
+    padding-left: 30px;
 }
 
 .contact ul {
     margin: 0;
     padding: 0;
-    padding-top: 20px;
     list-style: none;
 }
 
@@ -682,7 +756,7 @@ aside img {
    ========================================================================== */
 
 .post-template .post-meta {
-    top: 25px;
+    top: 5px;
 }
 
 .post-template section {
@@ -931,33 +1005,7 @@ aside img {
    9. Media Queries - Smaller than 900px
    ========================================================================== */
 
-@media only screen and (max-width: 900px) {
-
-    h1 {
-        font-size: 4.8rem;
-        text-indent: -2px;
-    }
-
-    h2 {
-        font-size: 3.8rem;
-    }
-
-    h3 {
-        font-size: 3.3rem;
-    }
-
-    h4 {
-        font-size: 2.8rem;
-    }
-
-}
-
 @media only screen and (max-width: 767.9px) {
-    .home aside img {
-        padding-top: 0;
-        padding-bottom: 30px;
-    }
-
     .comic * {
         width: 50%;
     }
