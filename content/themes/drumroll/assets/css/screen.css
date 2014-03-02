@@ -799,6 +799,7 @@ nav .logo img {
 
 .comic {
    border: 2px solid black;
+   margin-bottom: 30px;
    background: black;
    color: white;
 }
@@ -820,6 +821,28 @@ nav .logo img {
    border: 2px solid black
 }
 
+
+.post-content header {
+    /*margin-bottom: -30px;*/
+    border-bottom: 1px solid #aaa;
+}
+
+.post-content h1 {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-weight: 300;
+}
+
+.post-content header .post-meta {
+    margin-top: 30px;
+    top: 8px;
+}
+
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+    font-weight: 300;
+}
 /* ==========================================================================
    6. Third Party Elements - Embeds from other services
    ========================================================================== */

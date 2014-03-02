@@ -246,7 +246,9 @@ coreHelpers.excerpt = function (options) {
     });
 
     /*jslint regexp:true */
-    excerpt = String(this.html).replace(/<\/?[^>]+>/gi, '');
+    // Custom: strip hide comments
+    excerpt = String(this.html).replace(/<!--hide\{-->[\s\S]*?<!--\}hide-->/g, '');
+    excerpt = excerpt.replace(/<\/?[^>]+>/gi, '');
     excerpt = excerpt.replace(/(\r\n|\n|\r)+/gm, ' ');
     /*jslint regexp:false */
 
