@@ -629,11 +629,12 @@ nav .logo img {
 .home .subtitle {
     font-style: italic;
     padding-top: 0.3em;
+    font-size: 16px
 }
 
 .home h3.subtitle {
     font-weight: 200;
-    font-size: 1em;
+    font-size: 16px;
     display: block;
     text-align: center;
 }
