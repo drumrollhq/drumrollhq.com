@@ -433,6 +433,10 @@ margin on the iframe, cause it breaks stuff. */
    4. General - The main styles for the the theme
    ========================================================================== */
 
+.not-home .content {
+    padding-top: 30px;
+}
+
 .site-head {
     width: 100%;
     background-color: #4ebcb9;
