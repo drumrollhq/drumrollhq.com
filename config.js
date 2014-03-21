@@ -44,7 +44,7 @@ config = {
     // When running Ghost in the wild, use the production environment
     // Configure your URL and mail settings here
     production: {
-        url: 'http://godrumroll.org',
+        url: 'http://drumrollhq.com',
         mail: {},
         database: {
             client: 'sqlite3',
