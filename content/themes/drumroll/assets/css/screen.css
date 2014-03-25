@@ -248,7 +248,9 @@ blockquote small {
 blockquote small:before { content: '\2014 \00A0'; }
 
 blockquote cite {
-    font-weight:bold;
+    font-weight: bold;
+    font-style: normal;
+    float: right;
 }
 
 blockquote cite a { font-weight: normal; }
