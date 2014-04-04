@@ -122,6 +122,7 @@ body {
     line-height: 1.6em;
     color: #3A4145;
     text-align: justify;
+    font-weight: 300;
 }
 
 ::-moz-selection {
@@ -773,6 +774,8 @@ nav .logo img {
 .post-content img {
     display: block;
     margin: auto;
+    max-width: 100%;
+    margin-bottom: 30px;
 }
 
 .share {
