@@ -827,6 +827,10 @@ nav .logo img {
    border: 2px solid black
 }
 
+.post-content .comic img {
+    margin: 0;
+}
+
 
 .post-content header {
     /*margin-bottom: -30px;*/
