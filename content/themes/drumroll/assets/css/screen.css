@@ -659,12 +659,27 @@ nav .logo img {
     margin-top: -49px;
 }
 
-#eak-logo {
+#eak-logo img {
     width: 190px;
     display: block;
     margin: auto;
     margin-top: 30px;
     margin-bottom: -20px;
+}
+
+@media screen and (min-width: 820px) {
+    #eak-logo:after {
+        position: absolute;
+        left: 50%;
+        top: 85px;
+        margin-left: 100px;
+        display: block;
+        content: " ";
+        width: 107px;
+        height: 76px;
+        background-image: url(/assets/img/click-have-a-go.png);
+        background-size: 100% 100%;
+    }
 }
 
 .home em {
