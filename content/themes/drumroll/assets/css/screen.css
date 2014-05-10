@@ -660,7 +660,7 @@ nav .logo img {
 }
 
 #eak-logo img {
-    width: 190px;
+    width: 270px;
     display: block;
     margin: auto;
     margin-top: 30px;
@@ -671,8 +671,8 @@ nav .logo img {
     #eak-logo:after {
         position: absolute;
         left: 50%;
-        top: 85px;
-        margin-left: 100px;
+        top: 130px;
+        margin-left: 140px;
         display: block;
         content: " ";
         width: 107px;
@@ -744,6 +744,24 @@ nav .logo img {
 .home .human ul {
     font-size: 18px;
     margin-top: 20px;
+}
+
+.sneak-preview {
+    text-align: center;
+}
+
+.sneak-preview a, .sneak-preview video {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.sneak-preview img {
+    max-width: 100%;
+}
+
+.sneak-preview video {
+    width: 100%;
 }
 
 .contact {
