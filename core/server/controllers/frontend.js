@@ -143,17 +143,18 @@ frontendControllers = {
         var pageParam = req.params.page !== undefined ? parseInt(req.params.page, 10) : 1,
             options = {
                 page: pageParam
-            };
+            },
+            isHome = req.route.path === '/';
 
         // No negative pages, or page 1
-        if (isNaN(pageParam) || pageParam < 1 || (pageParam === 1 && req.route.path === '/page/:page/')) {
+        if (isNaN(pageParam) || pageParam < 1 || (pageParam === 1 && req.route.path === '/blog/:page/')) {
             return res.redirect(config.paths.subdir + '/');
         }
 
         return getPostPage(options).then(function (page) {
             // If page is greater than number of pages we have, redirect to last page
             if (pageParam > page.meta.pagination.pages) {
-                return res.redirect(page.meta.pagination.pages === 1 ? config.paths.subdir + '/' : (config.paths.subdir + '/page/' + page.meta.pagination.pages + '/'));
+                return res.redirect(page.meta.pagination.pages === 1 ? config.paths.subdir + '/' : (config.paths.subdir + '/blog/' + page.meta.pagination.pages + '/'));
             }
 
             setReqCtx(req, page.posts);
@@ -170,7 +171,7 @@ frontendControllers = {
                     }
 
                     setResponseContext(req, res);
-                    res.render(view, formatPageResponse(posts, page));
+                    res.render(view, formatPageResponse(posts, page, {isHome: isHome}));
                 });
             });
         }).catch(handleError(next));

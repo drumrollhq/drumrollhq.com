@@ -24,6 +24,8 @@ excerpt = function (options) {
     // Strip inline and bottom footnotes
     excerpt = excerpt.replace(/<a href="#fn.*?rel="footnote">.*?<\/a>/gi, '');
     excerpt = excerpt.replace(/<div class="footnotes"><ol>.*?<\/ol><\/div>/, '');
+    // custom: strip hide blocks
+    excerpt = excerpt.replace(/<!--hide\{-->[\s\S]*?<!--\}hide-->/g, '');
     // Strip other html
     excerpt = excerpt.replace(/<\/?[^>]+>/gi, '');
     excerpt = excerpt.replace(/(\r\n|\n|\r)+/gm, ' ');

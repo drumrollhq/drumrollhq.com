@@ -27,7 +27,7 @@ page_url = function (context, block) {
     }
 
     if (context > 1) {
-        url += '/page/' + context;
+        url += '/blog/' + context;
     }
 
     url += '/';
