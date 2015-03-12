@@ -30,7 +30,7 @@ function getPostPage(options) {
 
         // No negative posts per page, must be number
         if (!isNaN(postsPerPage) && postsPerPage > 0) {
-            options.limit = postsPerPage;
+            options.limit = options.limit || postsPerPage;
         }
         options.include = 'author,tags,fields';
         return api.posts.browse(options);
@@ -149,6 +149,11 @@ frontendControllers = {
         // No negative pages, or page 1
         if (isNaN(pageParam) || pageParam < 1 || (pageParam === 1 && req.route.path === '/blog/:page/')) {
             return res.redirect(config.paths.subdir + '/');
+        }
+
+        // Custom: limit to 3 posts on the home page
+        if (isHome) {
+          options.limit = 3;
         }
 
         return getPostPage(options).then(function (page) {
